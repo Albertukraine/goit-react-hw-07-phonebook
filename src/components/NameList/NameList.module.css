@@ -1,0 +1,13 @@
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding-inline-start: 0;
+}
+
+.contactWrapper {
+  display: flex;
+  margin: 5px 0px 5px 0px;
+  justify-content: space-between;
+}

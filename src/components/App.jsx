@@ -1,16 +1,21 @@
-export const App = () => {
+import React from 'react';
+import { Form } from './Form/Form';
+import { NameList } from './NameList/NameList';
+import { Filter } from './Filter/Filter';
+
+// тестовый Див
+// const FindState = () => {
+//   const value = useSelector( state => state.filterValue);
+//   return (<>
+//   <div>{value} RUUUM</div></>);
+// }
+
+export function App() {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <Form />
+      <Filter />
+      <NameList />
+    </>
   );
-};
+}
