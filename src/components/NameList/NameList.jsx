@@ -1,6 +1,8 @@
 import style from './NameList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contactsSlice';
+import { getContacts, getFilterValue } from 'redux/selectors';
+
 
 // console.log("delete Contact", deleteContact.toString);
 
@@ -9,9 +11,13 @@ export const NameList = () => {
   // const contacts = useSelector(state => state.numberValue);
   const dispatch = useDispatch();
 
-  const filterValueFromStore = useSelector(state => state.filterValue);
-  const contactsFromStore = useSelector(state => state.numberValue);
-  // console.log(contactsFromStore);
+
+  const filterValueFromStore = useSelector(getFilterValue);
+  const contactsFromStore = useSelector(getContacts);
+  const testArray = contactsFromStore[0];
+  console.log('testArray',testArray);
+
+  console.log('contactsFromStore',contactsFromStore);
   const normalizedFilter = filterValueFromStore.toLowerCase();
   const contacts = contactsFromStore.value.filter(contact =>
     contact.name.toLowerCase().includes(normalizedFilter)
