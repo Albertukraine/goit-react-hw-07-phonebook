@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts } from './operations';
+import { fetchContacts, deleteContact } from './operations';
+
 import axios from 'axios';
 
 const initialState = {
@@ -14,16 +15,16 @@ export const contactSlice = createSlice({
   name: 'numberValue',
   initialState,
   reducers: {
-    // setContact(state, action) {
-    //   state.value.push(action.payload);
-    //   console.log('set contact action');
-    // },
-    deleteContact(state, action) {
-      const index = state.value.filter(
-        contact => contact.id === action.payload
-      );
-      state.value.splice(index, 1);
+    setContact(state, action) {
+      state.value.push(action.payload);
+      console.log('set contact action');
     },
+    // deleteContact(state, action) {
+    //   const index = state.value.filter(
+    //     contact => contact.id === action.payload
+    //   );
+    //   state.value.splice(index, 1);
+    // },
    
   },
   extraReducers: {
@@ -43,10 +44,20 @@ export const contactSlice = createSlice({
       console.log("error");
 
     },
+    [deleteContact.fulfilled](state, action) {
+      console.log("delete click");
+      console.log(state.value);
+      console.log(action.payload.id);
+      const index = state.value.findIndex(
+        contact => contact.id === action.payload.id
+      );
+      state.value.splice(index, 1);
+
+      },
   },
 });
 export const {
   setContact,
-  deleteContact,
+  // deleteContact,
 //  fetchContacts,
 } = contactSlice.actions;
