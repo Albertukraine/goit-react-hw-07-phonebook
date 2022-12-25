@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, deleteContact } from './operations';
+import { fetchContacts, deleteContact, setContact } from './operations';
 
 import axios from 'axios';
 
@@ -56,10 +56,10 @@ export const contactSlice = createSlice({
       state.value.splice(index, 1);
 
       },
+
+     [setContact.fulfilled](state, action) {
+      state.value.push(action.payload);
+     } 
   },
 });
-export const {
-  setContact,
-  // deleteContact,
-//  fetchContacts,
-} = contactSlice.actions;
+
