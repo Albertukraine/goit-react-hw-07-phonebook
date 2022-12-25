@@ -15,7 +15,7 @@ export const NameList = () => {
 
   const filterValueFromStore = useSelector(getFilterValue);
   const contactsFromStore = useSelector(getContacts);
-  const testArray = contactsFromStore[0];
+  // const testArray = contactsFromStore[0];
   // console.log('testArray',testArray);
 
   // console.log('contactsFromStore',contactsFromStore);
