@@ -15,10 +15,12 @@ export const contactSlice = createSlice({
   name: 'numberValue',
   initialState,
   reducers: {
-    setContact(state, action) {
-      state.value.push(action.payload);
-      console.log('set contact action');
-    },
+    // setContact(state, action) {
+    //   state.value.push(action.payload);
+    //   console.log('set contact action');
+    // },
+
+
     // deleteContact(state, action) {
     //   const index = state.value.filter(
     //     contact => contact.id === action.payload
