@@ -1,128 +1,44 @@
-import axios from "axios";
-// import { fetchingInProgress, fetchingSuccess, fetchingError } from "./contactsSlice";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { nanoid } from "@reduxjs/toolkit";
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { nanoid } from '@reduxjs/toolkit';
 
-
-
-axios.defaults.baseURL = "https://63a427c49704d18da09fd28c.mockapi.io";
+axios.defaults.baseURL = 'https://63a427c49704d18da09fd28c.mockapi.io';
 export const fetchContacts = createAsyncThunk(
-        "fetchContacts",
-        async (_, thunkAPI) => {
-          try {
-            const response = await axios.get("/contacts");
-            // console.log(response.data);
-            return response.data;
-          } catch (e) {
-            return thunkAPI.rejectWithValue(e.message);
-          }
-        }
-      );
-
+  'fetchContacts',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('/contacts');
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
 
 export const deleteContact = createAsyncThunk(
-        "deleteContact",
-        async (contactID, thunkAPI) => {
-          try {
-            const response = await axios.delete(`/contacts/${contactID}`);
-            return response.data;
-          } catch (e) {
-            return thunkAPI.rejectWithValue(e.message);
-          }
-        }
-      );
-
+  'deleteContact',
+  async (contactID, thunkAPI) => {
+    try {
+      const response = await axios.delete(`/contacts/${contactID}`);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
 
 export const setContact = createAsyncThunk(
-        "tasks/addTask",
-        async (contact, thunkAPI) => {
-          try {
-            const response = await axios.post("/contacts", { id: nanoid(), name: contact.name, number: contact.number });
-            return response.data;
-          } catch (e) {
-            return thunkAPI.rejectWithValue(e.message);
-          }
-        }
-      );
-
-
-// export const fetchContacts = () => async dispatch => {
-//   try {
-//     dispatch(fetchingInProgress());
-//     const response = await axios.get("/contacts");
-//     console.log(response);
-//     dispatch(fetchingSuccess(response.data));
-//   } catch (e) {
-//     dispatch(fetchingError(e.message));
-//   }
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-// import axios from "axios";
-// import { createAsyncThunk } from "@reduxjs/toolkit";
-
-// import {
-//   fetchingInProgress,
-//   fetchingSuccess,
-//   fetchingError,
-// } from "./contactsSlice";
-// import { useDispatch } from 'react-redux';
-
-// console.log("fetchingInProgress",fetchingInProgress);
-
-
-// export async function getUser() {
-//   try {
-//     const response = await axios.get('https://63a427c49704d18da09fd28c.mockapi.io/contacts/');
-//     let dataToLocal = response.data;
-//     console.log(dataToLocal);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
-// axios.defaults.baseURL = "https://63a427c49704d18da09fd28c.mockapi.io";
-// export const getUser = createAsyncThunk(
-//     "fetchingSuccess",
-//     async (_, thunkAPI) => {
-//       try {
-//         const response = await axios.get("/contacts");
-//         console.log("response.data");
-//         return response.data;
-//       } catch (e) {
-//         return thunkAPI.rejectWithValue(e.message);
-//       }
-//     }
-//   );
-
-
-
-// export const getUser = async () => {
-//     console.log("get User WORKS");
-//     // const dispatch = useDispatch();
-    
-//   try {
-   
-//     // Индикатор загрузки
-//     // dispatch(() => fetchingInProgress());
-//     // HTTP-запрос
-//     const response = await axios.get("/contacts");
-//     console.log(response.data);
-//     // Обработка данных
-//     // dispatch(fetchingSuccess(response.data));
-//   } catch (e) {
-//     // Обработка ошибки
-   
-//     // dispatch(fetchingError(e.message));
-//   }
-// };
+  'tasks/addTask',
+  async (contact, thunkAPI) => {
+    try {
+      const response = await axios.post('/contacts', {
+        id: nanoid(),
+        name: contact.name,
+        number: contact.number,
+      });
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
